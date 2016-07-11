@@ -9,7 +9,19 @@
 import Foundation
 
 class Enemy {
-    var healthPoints:Int = 5
+    enum EnemyState {
+        case Idle
+        case Attacking
+        case Moving
+    }
+    
+    struct InitialPosition {
+        var posX:Int = 0
+        var posY:Int = 0
+    }
+    
+    var healthPoints:Int = 0
+    var enemyState:EnemyState = EnemyState.Idle
     
     init(){
         
@@ -17,6 +29,20 @@ class Enemy {
     
     init(healthPoints:Int){
         self.healthPoints = healthPoints
+    }
+    
+    func doAttack() {
+        print("doAttack")
+    }
+    
+    func receivePlayerAttack(hitpoints:Int, weapon:String, teste:Int){
+        print("hit point \(hitpoints)")
+    }
+    
+    //O -> deixa explicito o retorno da funcao
+    func doPowerStrike(playerX:Int, playerY:Int) -> Int{
+        print("doPowerStrike")
+        return 1000
     }
     
 }

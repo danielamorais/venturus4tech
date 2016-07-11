@@ -26,8 +26,13 @@ class GameScene: SKScene {
         print("HP \(hp)")
         print("weapon description \(weapon.0) and \(weapon.1)")
         print("HP Integer \(intHP)")
-        print("Enemy health points \(enemy.healthPoints)")
         print("Enemy health\(enemy.healthPoints)")
         print("Enemy health \(enemy2.healthPoints)")
+        print("Enemy State\(enemy.enemyState)")
+        enemy.doAttack()
+        enemy.receivePlayerAttack(0, weapon:"blabla", teste:1)
+        //Se existem mais de um atributo p/ serem passados, sempre deixar explicito os próximos
+        let playerDamage = enemy.doPowerStrike(10, playerY: 10)
+        print("Player Damage \(playerDamage)")
     }
 }
