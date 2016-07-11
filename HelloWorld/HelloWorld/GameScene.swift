@@ -17,6 +17,7 @@ class GameScene: SKScene {
     let yPosition = 300.50
     let weapon = ("shiriken", 100)
     let enemy:Enemy = Enemy()
+    let enemy2:Enemy = Enemy(healthPoints: 400)
     
     override func didMoveToView(view: SKView) {
         var intHP = Int(hp)
@@ -26,7 +27,7 @@ class GameScene: SKScene {
         print("weapon description \(weapon.0) and \(weapon.1)")
         print("HP Integer \(intHP)")
         print("Enemy health points \(enemy.healthPoints)")
-        enemy.damage = 200
-        print("Enemy damage\(enemy.damage)")
+        print("Enemy health\(enemy.healthPoints)")
+        print("Enemy health \(enemy2.healthPoints)")
     }
 }
