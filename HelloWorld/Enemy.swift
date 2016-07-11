@@ -11,15 +11,12 @@ import Foundation
 class Enemy {
     var healthPoints:Int = 5
     
-    var damage:Int{
-        get{
-            print("GET!")
-            return self.damage
-        }
-        set(newValue){
-            print("SET \(newValue)")
-            self.damage = newValue
-        }
+    init(){
+        
+    }
+    
+    init(healthPoints:Int){
+        self.healthPoints = healthPoints
     }
     
 }
