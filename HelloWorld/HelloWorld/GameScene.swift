@@ -18,21 +18,72 @@ class GameScene: SKScene {
     let weapon = ("shiriken", 100)
     let enemy:Enemy = Enemy()
     let enemy2:Enemy = Enemy(healthPoints: 400)
+    var enemyList:Array<Enemy> = Array<Enemy>()
+    //opcional: var enemiesList = Array<Enemy>()
+    var armoredEnemy:ArmoredEnemy = ArmoredEnemy()
     
     override func didMoveToView(view: SKView) {
+        createEnemies(10)
+        
         var intHP = Int(hp)
-        print("Position x \(xPosition)")
-        print("Position x \(yPosition)")
-        print("HP \(hp)")
         print("weapon description \(weapon.0) and \(weapon.1)")
         print("HP Integer \(intHP)")
         print("Enemy health\(enemy.healthPoints)")
-        print("Enemy health \(enemy2.healthPoints)")
         print("Enemy State\(enemy.enemyState)")
         enemy.doAttack()
         enemy.receivePlayerAttack(0, weapon:"blabla", teste:1)
         //Se existem mais de um atributo p/ serem passados, sempre deixar explicito os próximos
         let playerDamage = enemy.doPowerStrike(10, playerY: 10)
         print("Player Damage \(playerDamage)")
+        enemy.damage = 10
+        print("damage \(enemy.damage)")
+        enemyList.append(enemy)
+        enemyList.append(enemy2)
+        enemyList.append(armoredEnemy) //polimorfismo
+        print("\(enemyList[0].healthPoints)")
+        print("\(enemyList[1].healthPoints)")
+        
+        enemyList.removeAtIndex(1)
+        
+        enemy.name = "sdsdfdsf"
+        print("Enemy name \(enemy.name!)")
+        if let name = enemy.name {
+            print("The value of name is \(name)")
+        } else {
+            print("The value of name isn't defined")
+        }
+        
+        /*
+        if let _ = enemy.name {
+        print("Not nil")
+        } else {
+        print("The value of name isn't defined")
+        }
+        */
+        
+        armoredEnemy.doAttack()
+        armoredEnemy.blastAttack()
+        
+        orderAllEnemiesToAttack()
+    }
+    
+    func orderAllEnemiesToAttack() {
+        for enemy in enemyList {
+            //Verificar se o inimigo é armored ou comum
+            if let storedEnemy = enemy as? ArmoredEnemy {
+                storedEnemy.blastAttack()
+            } else {
+                //storedEnemy é um optional, pode ser nulo ou ArmoredEnemy. Aqui eh nulo
+                enemy.doAttack()
+            }
+        }
+    }
+    
+    func createEnemies(quantity:Int) {
+        //for var i in 1...quantity: porem como i nao é usado pode-se usar _
+        for _ in 1...quantity {
+            enemyList.append(Enemy())
+        }
+        enemyList.append(ArmoredEnemy())
     }
 }

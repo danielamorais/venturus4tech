@@ -7,12 +7,23 @@
 //
 
 import Foundation
+//atributos = stored properties 
 
 class Enemy {
     enum EnemyState {
         case Idle
         case Attacking
         case Moving
+    }
+    
+    private var _damage:Int = 0
+    var damage:Int {
+        get{
+            return _damage
+        }
+        set(newValue){
+            _damage = newValue
+        }
     }
     
     struct InitialPosition {
@@ -22,6 +33,7 @@ class Enemy {
     
     var healthPoints:Int = 0
     var enemyState:EnemyState = EnemyState.Idle
+    var name:String?
     
     init(){
         
