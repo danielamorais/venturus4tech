@@ -27,6 +27,7 @@ class GameScene: SKScene {
     //var enemyStartship
     var touchLocation:CGPoint?
     
+    //FIXME
     /*
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
@@ -35,10 +36,12 @@ class GameScene: SKScene {
         }
     }
     */
+
     
     override func didMoveToView(view: SKView) {
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        starship.position = CGPointMake(150, 150)
+        starship.xScale = 0.5
+        starship.yScale = 0.5
         addChild(background)
         addChild(starship)
         
