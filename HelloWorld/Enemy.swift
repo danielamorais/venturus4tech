@@ -10,6 +10,8 @@ import Foundation
 //atributos = stored properties 
 
 class Enemy:MoveProtocol {
+   // SKSpriteNode *startship = [SKSprinteNode spriteNodeWithImageNamed:"Spaceship.png"];
+    
     enum EnemyState {
         case Idle
         case Attacking

@@ -22,8 +22,28 @@ class GameScene: SKScene {
     //opcional: var enemiesList = Array<Enemy>()
     var armoredEnemy:ArmoredEnemy = ArmoredEnemy()
     var shoot = Shoot()
+    let starship = SKSpriteNode(imageNamed: "Spaceship")
+    let background = SKSpriteNode(imageNamed: "background")
+    //var enemyStartship
+    var touchLocation:CGPoint?
+    
+    /*
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            touchLocation = touch.locationInView(view)
+            print(position)
+        }
+    }
+    */
     
     override func didMoveToView(view: SKView) {
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        starship.position = CGPointMake(150, 150)
+        addChild(background)
+        addChild(starship)
+        
+        //let actionMove = SKAction.moveTo(touchLocation!, duration: 0.5)
+        
         //createEnemies(10)
         let moveable1:MoveProtocol = shoot
         let moveable2:MoveProtocol = enemy2
