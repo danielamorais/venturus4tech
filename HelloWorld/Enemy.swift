@@ -9,7 +9,7 @@
 import Foundation
 //atributos = stored properties 
 
-class Enemy {
+class Enemy:MoveProtocol {
     enum EnemyState {
         case Idle
         case Attacking
@@ -56,5 +56,14 @@ class Enemy {
         print("doPowerStrike")
         return 1000
     }
+    
+    func startMove(){
+        print("Enemy startMove")
+    }
+    
+    func stopMove(){
+        print("Enemy stopMove")
+    }
+
     
 }

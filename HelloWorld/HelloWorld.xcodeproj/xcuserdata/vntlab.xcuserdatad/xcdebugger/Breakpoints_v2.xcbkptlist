@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HelloWorld/GameScene.swift"
-            timestampString = "490020107.813634"
+            timestampString = "490023594.534478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "didMoveToView(_:)"
             landmarkType = "5">
          </BreakpointContent>

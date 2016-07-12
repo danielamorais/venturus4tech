@@ -21,9 +21,15 @@ class GameScene: SKScene {
     var enemyList:Array<Enemy> = Array<Enemy>()
     //opcional: var enemiesList = Array<Enemy>()
     var armoredEnemy:ArmoredEnemy = ArmoredEnemy()
+    var shoot = Shoot()
     
     override func didMoveToView(view: SKView) {
-        createEnemies(10)
+        //createEnemies(10)
+        let moveable1:MoveProtocol = shoot
+        let moveable2:MoveProtocol = enemy2
+        
+        moveable1.startMove()
+        moveable2.stopMove()
         
         var intHP = Int(hp)
         print("weapon description \(weapon.0) and \(weapon.1)")
@@ -85,5 +91,13 @@ class GameScene: SKScene {
             enemyList.append(Enemy())
         }
         enemyList.append(ArmoredEnemy())
+    }
+    
+    func startMove(){
+        
+    }
+    
+    func stopMove(){
+        
     }
 }

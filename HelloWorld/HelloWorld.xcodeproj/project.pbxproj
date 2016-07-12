@@ -16,6 +16,8 @@
 		7F23AECB1D33C6C00089A44A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F23AEC91D33C6C00089A44A /* LaunchScreen.storyboard */; };
 		7F23AED31D33DB190089A44A /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F23AED21D33DB190089A44A /* Enemy.swift */; };
 		7FDD32A81D3517EB0096E076 /* ArmoredEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD32A71D3517EB0096E076 /* ArmoredEnemy.swift */; };
+		7FDD32AA1D3528840096E076 /* Shoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD32A91D3528840096E076 /* Shoot.swift */; };
+		7FDD32AC1D3528E00096E076 /* MoveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD32AB1D3528E00096E076 /* MoveProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		7F23AECC1D33C6C00089A44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F23AED21D33DB190089A44A /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = ../Enemy.swift; sourceTree = "<group>"; };
 		7FDD32A71D3517EB0096E076 /* ArmoredEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArmoredEnemy.swift; path = ../ArmoredEnemy.swift; sourceTree = "<group>"; };
+		7FDD32A91D3528840096E076 /* Shoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shoot.swift; sourceTree = "<group>"; };
+		7FDD32AB1D3528E00096E076 /* MoveProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 		7F23AEBB1D33C6C00089A44A /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				7FDD32A91D3528840096E076 /* Shoot.swift */,
+				7FDD32AB1D3528E00096E076 /* MoveProtocol.swift */,
 				7FDD32A71D3517EB0096E076 /* ArmoredEnemy.swift */,
 				7F23AED21D33DB190089A44A /* Enemy.swift */,
 				7F23AEBC1D33C6C00089A44A /* AppDelegate.swift */,
@@ -148,11 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FDD32AC1D3528E00096E076 /* MoveProtocol.swift in Sources */,
 				7F23AED31D33DB190089A44A /* Enemy.swift in Sources */,
 				7F23AEC11D33C6C00089A44A /* GameScene.swift in Sources */,
 				7F23AEC31D33C6C00089A44A /* GameViewController.swift in Sources */,
 				7FDD32A81D3517EB0096E076 /* ArmoredEnemy.swift in Sources */,
 				7F23AEBD1D33C6C00089A44A /* AppDelegate.swift in Sources */,
+				7FDD32AA1D3528840096E076 /* Shoot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
