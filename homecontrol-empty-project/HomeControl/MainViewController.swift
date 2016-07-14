@@ -16,22 +16,27 @@ class MainViewController:UIViewController{
     @IBOutlet weak var lampSwitch: UISwitch!
     
     override func viewDidLoad() {
-        lampSwitch.addTarget(self, action: Selector("switchLamp"), forControlEvents: UIControlEvents.ValueChanged)
-        temperatureImage.userInteractionEnabled = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("fetchTemperature"))
+        // Adicionando um Target, que vai procurar a func "switchLamp" quando o lampSwitch mudar de valor
+        lampSwitch.addTarget(self, action:Selector("switchLamp"), forControlEvents: UIControlEvents.ValueChanged);
         
-        
-        
-        
-        temperatureImage.addGestureRecognizer(tapGestureRecognizer)
+        // Adicionando um target, que vai procurar a funcao "fetchTemperature", quando for tocado
+        temperatureImage.userInteractionEnabled = true;
+        let tapGestureRecognizer = UITapGestureRecognizer (target: self, action: Selector("fetchTemperature"));
+        temperatureImage.addGestureRecognizer(tapGestureRecognizer);
+        NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: "fetchLampState", userInfo: nil, repeats: true)
     }
     
     func fetchTemperature() {
-        temperatureLabel.text = temperatureLabel.text! + "a"
+        IOTService.sharedInstance.fetchTemperature(){(statuscode, error, homeModel) -> Void in
+            print("Temperature ready to be displayed")
+            //Aqui devido ao dispatch_async já está na thread main 
+            self.temperatureLabel.text = "\(homeModel!.temperatureValue)"
+        }
+        print("fetchTemperature in Progress..");
     }
     
     func switchLamp() {
-        print("Value chnaged!")
+        print("Value changed!")
     }
     
     func fetchLampState() {
