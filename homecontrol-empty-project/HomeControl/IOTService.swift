@@ -40,10 +40,47 @@ class IOTService {
     }
     
     func switchLamp(state:Bool,switchLampCallBack:(Int, NSError?) -> ()) {
+        let lampURL = NSURL(string: "http://172.24.30.33:3000/switchlamp")
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: lampURL!)
         
+        let requestBody = "{\"lampstate\":\(state)}"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = requestBody.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPMethod = "POST"
+        
+        let dataTask = session.dataTaskWithRequest(request){
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            print("Lamp switch data arrived")
+        }
     }
     
     func fetchLampState(switchLampCallBack:(Int, NSError?) -> ()) {
+        let getStatusURL = NSURL(string: "http://172.24.30.33:3000/switchlamp")
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: getStatusURL!)
+        request.HTTPMethod = "GET"
+        //var httpResponse = NSHTTPURLResponse()
+        var statusCode = 0
+        
+        let dataTask = session.dataTaskWithRequest(request,
+            completionHandler: {
+                (data:NSData?, response:NSURLResponse?,error:NSError?) -> Void in
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    statusCode = httpResponse.statusCode
+                }
+                
+                if let _ = data {
+                    //Forcar para retornar para a main
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        switchLampCallBack(statusCode, nil) }
+                    )
+                }
+                
+                
+            }
+        )
+        dataTask.resume()
         
     }
     

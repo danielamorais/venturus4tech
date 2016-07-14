@@ -29,19 +29,30 @@ class MainViewController:UIViewController{
     func fetchTemperature() {
         IOTService.sharedInstance.fetchTemperature(){(statuscode, error, homeModel) -> Void in
             print("Temperature ready to be displayed")
-            //Aqui devido ao dispatch_async já está na thread main 
+            //Aqui devido ao dispatch_async já está na thread main
             self.temperatureLabel.text = "\(homeModel!.temperatureValue)"
         }
         print("fetchTemperature in Progress..");
     }
     
     func switchLamp() {
-        print("Value changed!")
+        //lampSwitch.on se refere a estado booleano e nao estado fisico da lampada (desligado/ligado)
+        IOTService.sharedInstance.switchLamp(lampSwitch.on){
+            (statuscode, error) in
+            print("Lamp Switch response")
+        }
     }
     
     func fetchLampState() {
-    
-    
+        IOTService.sharedInstance.fetchLampState(){(statuscode, error) -> Void in
+            //print("\(statuscode)")
+            if(statuscode == 200){
+                self.lampSwitch.setOn(true, animated: true)
+            } else {
+                self.lampSwitch.setOn(false, animated: true)
+            }
+            
+        }
     }
     
 }
