@@ -46,7 +46,7 @@ class MainViewController:UIViewController{
     func fetchLampState() {
         IOTService.sharedInstance.fetchLampState(){(statuscode, error) -> Void in
             //print("\(statuscode)")
-            if(statuscode == 200){
+            if(statuscode == 200) {
                 self.lampSwitch.setOn(true, animated: true)
             } else {
                 self.lampSwitch.setOn(false, animated: true)

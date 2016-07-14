@@ -60,7 +60,6 @@ class IOTService {
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: getStatusURL!)
         request.HTTPMethod = "GET"
-        //var httpResponse = NSHTTPURLResponse()
         var statusCode = 0
         
         let dataTask = session.dataTaskWithRequest(request,
@@ -85,7 +84,7 @@ class IOTService {
     }
     
     func convertJsonToHomeControl(jsonObjectData:NSData) -> HomeModel? {
-        var homeControl:HomeModel?;
+        var homeControl:HomeModel?
         
         do {
             
