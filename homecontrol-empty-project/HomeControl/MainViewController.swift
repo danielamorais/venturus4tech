@@ -15,6 +15,8 @@ class MainViewController:UIViewController{
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var lampSwitch: UISwitch!
     
+    var tempList = [String]()
+    
     override func viewDidLoad() {
         // Adicionando um Target, que vai procurar a func "switchLamp" quando o lampSwitch mudar de valor
         lampSwitch.addTarget(self, action:Selector("switchLamp"), forControlEvents: UIControlEvents.ValueChanged);
@@ -24,6 +26,12 @@ class MainViewController:UIViewController{
         let tapGestureRecognizer = UITapGestureRecognizer (target: self, action: Selector("fetchTemperature"));
         temperatureImage.addGestureRecognizer(tapGestureRecognizer);
         NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: "fetchLampState", userInfo: nil, repeats: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        tempList.append(temperatureLabel.text!)
+        let tempTableViewController = segue.destinationViewController as? TempTableViewController //o segue.destination.. sabe qual eh o proximo view controller que esta indo
+        tempTableViewController?.tempList = tempList
     }
     
     func fetchTemperature() {
